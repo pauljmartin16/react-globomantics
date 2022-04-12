@@ -1,14 +1,20 @@
 import './house.css';
 import React, { useState, Suspense, lazy } from 'react';
 import emailIcon from './Email.png';
+import { useNavigate } from 'react-router-dom';
 // import Inquiry from './Inquiry';
 const InquiryLazy = React.lazy(() => import('./Inquiry'));
 
 const House = ({ house }) => {
+    const navigate = useNavigate();
     const [inquiryShown, setInquiryShown ] = useState(false);
     const inquiryClick = () => {
         setInquiryShown(!inquiryShown);
     };
+
+    const jumpToSpeakers = () => {
+        navigate('/speakers');
+    }
 
     return (
         <div>
@@ -38,6 +44,7 @@ const House = ({ house }) => {
                     }
                 </div>
             </div>
+            <button onClick={() => {jumpToSpeakers()}}>Jump to Speakers Module</button>
         </div>
     );
 };
